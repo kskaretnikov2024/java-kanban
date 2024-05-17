@@ -1,9 +1,9 @@
 public class Managers {
-    public static TaskManagerInterface getAddTaskInterface(AddTaskInterface addTaskInterface) {
-        return new TaskManager(addTaskInterface);
+    public static TaskManager getAddTask (AddTask addTask) {
+        return new TaskManager(addTask);
     }
 
-    public static AddTaskInterface getAddTask() {
+    public static AddTask getAddTask() {
         return new AddTask();
     }
 }

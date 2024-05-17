@@ -3,16 +3,16 @@ import java.util.List;
 import java.util.Collections;
 import java.util.ArrayList;
 
-public class TaskManager implements TaskManagerInterface {
+public class TaskManager {
     private static int id = 0;
 
     private final HashMap<Integer, Task> tasks = new HashMap<>();
     private final HashMap<Integer, Subtask> subtasks = new HashMap<>();
     private final HashMap<Integer, Epic> epics = new HashMap<>();
-    private final AddTaskInterface addTaskInterface;
+    private final AddTask addTask;
 
-    public TaskManager(AddTaskInterface addTaskInterface) {
-        this.addTaskInterface = addTaskInterface;
+    public TaskManager(AddTask addTask) {
+        this.addTask = addTask;
     }
 
     public int generateID() {
@@ -61,17 +61,17 @@ public class TaskManager implements TaskManagerInterface {
     }
 
     public Task getTaskByID(int id) {
-        addTaskInterface.add(tasks.get(id));
+        addTask.add(tasks.get(id));
         return tasks.get(id);
     }
 
     public Epic getEpicByID(int id) {
-        addTaskInterface.add(epics.get(id));
+        addTask.add(epics.get(id));
         return epics.get(id);
     }
 
     public Subtask getSubtaskByID(int id) {
-        addTaskInterface.add(subtasks.get(id));
+        addTask.add(subtasks.get(id));
         return subtasks.get(id);
     }
 
@@ -109,7 +109,42 @@ public class TaskManager implements TaskManagerInterface {
     }
 
     public void updateStatusEpic(Epic epic) {
+        if (epics.containsKey(epic.getID())) {
+            if (epic.getSubtaskIDs().isEmpty()) {
+                epic.setStatus(Status.NEW);
+            } else {
+                List<Subtask> subtasksNew = new ArrayList<>();
+                int countDone = 0;
+                int countNew = 0;
 
+                for (int i = 0; i < epic.getSubtaskIDs().size(); i++) {
+                    subtasksNew.add(subtasks.get(epic.getSubtaskIDs().get(i)));
+                }
+
+                for (Subtask subtask : subtasksNew) {
+                    if (subtask.getStatus() == Status.DONE) {
+                        countDone++;
+                    }
+                    if (subtask.getStatus() == Status.NEW) {
+                        countNew++;
+                    }
+                    if (subtask.getStatus() == Status.IN_PROGRESS) {
+                        epic.setStatus(Status.IN_PROGRESS);
+                        return;
+                    }
+                }
+
+                if (countDone == epic.getSubtaskIDs().size()) {
+                    epic.setStatus(Status.DONE);
+                } else if (countNew == epic.getSubtaskIDs().size()) {
+                    epic.setStatus(Status.NEW);
+                } else {
+                    epic.setStatus(Status.IN_PROGRESS);
+                }
+            }
+        } else {
+            System.out.println("Эпик не найден");
+        }
     }
 
     public void updateEpic(Epic epic) {
