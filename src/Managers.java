@@ -1,9 +1,14 @@
 public class Managers {
-    public static TaskManager getAddTask (AddTask addTask) {
-        return new TaskManager(addTask);
+    /*public static InMemoryTaskManager getAddTask (AddTask addTask) {
+        return new InMemoryTaskManager(addTask);
     }
 
     public static AddTask getAddTask() {
         return new AddTask();
+    }*/
+    public  TaskManager  getDefault() {
+
+        return TaskManager ;
     }
 }
+
