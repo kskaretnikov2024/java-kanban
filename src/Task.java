@@ -6,33 +6,47 @@ public class Task {
     private int id;
     private Status status;
 
-    public Task(String description, String name, Status status) {
-        this.description = description;
+    public Task( String description, String name, Status status) {
+            this.description = description;
         this.name = name;
         this.status = status;
     }
 
+    public Task(int id, String name, String description, Status status) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.status = status;
+    }
+
+
     public String getDescription() {
+
         return description;
     }
 
     public int getID() {
+
         return id;
     }
 
     public void setID(int id) {
+
         this.id = id;
     }
 
     public String getName() {
+
         return name;
     }
 
     public Status getStatus() {
+
         return status;
     }
 
     public void setStatus(Status status) {
+
         this.status = status;
     }
 
@@ -41,12 +55,12 @@ public class Task {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return id == task.id && Objects.equals(description, task.description) && Objects.equals(name, task.name)
-                && status == task.status;
+        return id == task.id;
     }
 
     @Override
     public int hashCode() {
+
         return Objects.hash(description, id, name, status);
     }
 

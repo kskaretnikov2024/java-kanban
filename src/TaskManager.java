@@ -21,11 +21,11 @@ public interface TaskManager {
 
     Subtask getSubtaskByID(int id);
 
-    void createTask(Task task);
+    Task createTask(Task task);
 
-    void createEpic(Epic epic);
+    Epic createEpic(Epic epic);
 
-    void createSubtask(Subtask subtask);
+    Subtask createSubtask(Subtask subtask);
 
     void updateTask(Task task);
 
