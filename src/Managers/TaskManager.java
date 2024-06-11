@@ -1,7 +1,14 @@
+package Managers;
+
+import Tasks.Epic;
+import Tasks.Subtask;
+import Tasks.Task;
+
 import java.util.List;
 
 public interface TaskManager {
-    int generateID();
+
+    int generateId();
 
     List<Task> getAllTasks();
 
@@ -15,11 +22,11 @@ public interface TaskManager {
 
     void deleteAllSubtasks();
 
-    Task getTaskByID(int id);
+    Task getTaskById(int id);
 
-    Epic getEpicByID(int id);
+    Epic getEpicById(int id);
 
-    Subtask getSubtaskByID(int id);
+    Subtask getSubtaskById(int id);
 
     Task createTask(Task task);
 
@@ -35,13 +42,13 @@ public interface TaskManager {
 
     void updateSubtask(Subtask subtask);
 
-    void deleteTaskByID(int id);
+    void deleteTaskById(int id);
 
-    void deleteEpicByID(int id);
+    void deleteEpicById(int id);
 
-    void deleteSubtaskByID(int id);
+    void deleteSubtaskById(int id);
 
-    List<Subtask> getAllSubtasksByEpicID(int id);
+    List<Subtask> getAllSubtasksByEpicId(int id);
 
     List<Task> getHistory();
 }

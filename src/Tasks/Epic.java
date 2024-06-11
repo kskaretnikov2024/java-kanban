@@ -1,8 +1,13 @@
+package Tasks;
+
+import Status.Status;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Epic extends Task {
-    private final ArrayList<Integer> subtaskIDs = new ArrayList<>();
+    private final List<Integer> subtaskIds = new ArrayList<>();
 
     public Epic(String description, String name, Status status) {
         super(description, name, status);
@@ -12,12 +17,12 @@ public class Epic extends Task {
         super(id, description, name, status);
     }
 
-    public ArrayList<Integer> getSubtaskIDs() {
-        return subtaskIDs;
+    public List<Integer> getSubtaskIds() {
+        return subtaskIds;
     }
 
-    public void setSubtaskIDs(int id) {
-        subtaskIDs.add(id);
+    public void setSubtaskIds(int id) {
+        subtaskIds.add(id);
     }
 
     @Override
@@ -26,20 +31,20 @@ public class Epic extends Task {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Epic epic = (Epic) o;
-        return Objects.equals(subtaskIDs, epic.subtaskIDs);
+        return Objects.equals(subtaskIds, epic.subtaskIds);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), subtaskIDs);
+        return Objects.hash(super.hashCode(), subtaskIds);
     }
 
     @Override
     public String toString() {
-        return "Epic{" +
-                "subtaskIDs=" + subtaskIDs +
+        return "Tasks.Epic{" +
+                "subtaskIDs=" + subtaskIds +
                 ", description='" + getDescription() + '\'' +
-                ", ID=" + getID() +
+                ", ID=" + Id() +
                 ", name='" + getName() + '\'' +
                 ", status=" + getStatus() +
                 '}';

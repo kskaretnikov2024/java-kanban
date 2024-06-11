@@ -1,20 +1,24 @@
+package Tasks;
+
+import Status.Status;
+
 import java.util.Objects;
 
 public class Subtask extends Task {
-    private final int epicID;
+    private final int epicId;
 
-    public Subtask(String description, String name, Status status, int epicID) {
+    public Subtask(String description, String name, Status status, int epicId) {
         super(description, name, status);
-        this.epicID = epicID;
+        this.epicId = epicId;
     }
 
-    public Subtask(int id, String description, String name, Status status, int epicID) {
+    public Subtask(int id, String description, String name, Status status, int epicId) {
         super(id, description, name, status);
-        this.epicID = epicID;
+        this.epicId = epicId;
     }
 
-    public int getEpicID() {
-        return epicID;
+    public int getEpicId() {
+        return epicId;
     }
 
     @Override
@@ -23,20 +27,20 @@ public class Subtask extends Task {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Subtask subtask = (Subtask) o;
-        return epicID == subtask.epicID;
+        return epicId == subtask.epicId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), epicID);
+        return Objects.hash(super.hashCode(), epicId);
     }
 
     @Override
     public String toString() {
-        return "Subtask{" +
-                "epicID=" + getEpicID() +
+        return "Tasks.Subtask{" +
+                "epicID=" + getEpicId() +
                 ", description='" + getDescription() + '\'' +
-                ", ID=" + getID() +
+                ", ID=" + Id() +
                 ", name='" + getName() + '\'' +
                 ", status=" + getStatus() +
                 '}';

@@ -1,9 +1,13 @@
+package Managers;
+
+import Tasks.Task;
 import java.util.LinkedList;
 import java.util.List;
 
 public class InMemoryHistoryManager implements HistoryManager {
     private static final int LIMIT_HISTORY_TASKS = 10;
     private final List<Task> historyTasks = new LinkedList<>();
+
     @Override
     public void add(Task task) {
         if (task != null) {
@@ -14,7 +18,7 @@ public class InMemoryHistoryManager implements HistoryManager {
                 historyTasks.add(task);
             }
         } else {
-            System.out.println("Task not found");
+            System.out.println("Tasks.Task not found");
         }
     }
 
