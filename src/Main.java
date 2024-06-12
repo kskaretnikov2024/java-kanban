@@ -1,5 +1,5 @@
 import Managers.Managers;
-import Status.Status;
+import Statuses.Status;
 import Tasks.Epic;
 import Tasks.Subtask;
 import Tasks.Task;
